@@ -1,0 +1,73 @@
+CREATE TABLE years (
+    id_year INT (1) AUTO_INCREMENT,
+    name_year_english VARCHAR (25) NOT NULL UNIQUE,
+    name_year_arabic VARCHAR (25) NOT NULL UNIQUE,
+  	CONSTRAINT PK_id_year PRIMARY KEY (id_year)
+);
+INSERT INTO years (name_year_english,name_year_arabic) VALUES   ("First Year","السنة الأولى") ,
+                                                                ("Second Year","السنة الثانية"),
+                                                                ("Third Year","السنة الثالثة"),
+                                                                ("Fourth Year","السنة الرابعة"),
+                                                                ("Fifth Year","السنة الخامسة");
+
+
+CREATE TABLE Times (
+    id_time INT (1) AUTO_INCREMENT,
+    ac_time VARCHAR (5) NOT NULL, 
+  	CONSTRAINT PK_id_Time PRIMARY KEY (id_Time)
+);
+INSERT INTO Times (ac_time) VALUES  ("09:00"),
+                                    ("11:30"),
+                                    ("12:00"),
+                                    ("02:00"),
+                                    ("02:30"),
+                                    ("03:00");
+
+
+CREATE TABLE Users (
+  id_user INT (2) AUTO_INCREMENT,
+  user_name varchar(255) NOT NULL,
+  password varchar(255) NOT NULL,
+  name varchar(255) NOT NULL,
+  college_name varchar(255) NOT NULL,
+  CONSTRAINT PK_id_user PRIMARY KEY (id_user)
+);
+INSERT INTO Users (user_name, password, name, college_Name) VALUES
+                      ("zohir", "123", "zohir" , "IT"),
+                      ("john", "abc", "John" , "MED");
+
+
+
+CREATE TABLE Subjects (
+    id_subject INT (2) AUTO_INCREMENT,
+    name_subject_arabic VARCHAR (45) NOT NULL,
+    id_year INT (1) NOT NULL,
+    id_sem INT (1) NOT NULL,
+    ac_date date NOT NULL,
+    id_time INT (1) NOT NULL,
+    id_user INT (11) NOT NULL,
+  	CONSTRAINT PK_id_subject PRIMARY KEY (id_subject),
+    CONSTRAINT FK_id_year FOREIGN KEY (id_year) REFERENCES years(id_year),
+    CONSTRAINT FK_id_time FOREIGN KEY (id_time) REFERENCES Times(id_time),
+    CONSTRAINT FK_id_user FOREIGN KEY (id_user) REFERENCES Users(id_user)
+);
+
+INSERT INTO Subjects (name_subject_arabic,id_year,id_sem,ac_date,id_time,id_user) VALUES 
+                                ("تحليل (1)م",1,1,'2022-07-23',1,1), 
+                                ("فيزياء (1)",1,1,'2022-07-18',1,1), 
+                                ("فيزياء (2)م",1,1,'2022-07-03',2,1), 
+                                ("جبر خطي",1,1,'2022-08-04',2,1), 
+                                ("احتمالات (م)",2,1,'2022-07-04',3,1),
+                                ("لغة اجنبية (4)م",2,2,'2022-06-30',1,1),
+                                ("رسوميات حاسوبية",3,1,'2022-07-26',3,1);
+
+
+/*
+CREATE TABLE title (
+    id_title INT (5) AUTO_INCREMENT,
+    title VARCHAR (25) NOT NULL,
+    id_user INT (5) NOT NULL,
+  	CONSTRAINT PK_id_title PRIMARY KEY (id_title)
+    CONSTRAINT FK_id_title FOREIGN KEY (id_title) REFERENCES years(id_title),
+);
+*/

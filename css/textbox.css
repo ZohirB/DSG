@@ -1,0 +1,22 @@
+
+input[type=text], select {
+  width: 100%;
+  font: 300 0.8em/0.8 'Tajawal-Light', sans-serif;
+  padding: 12px 20px;
+  margin: 0px 0px;
+  display: flex;
+  border-radius: 0.5em;
+  box-sizing: border-box;
+  align-content: center;
+}
+.input-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.input-container input:focus, .input-container input:active {
+  outline: none;
+}
+.input-container input {
+  border: none;
+}
